@@ -1,6 +1,6 @@
 import csv, os
 
-def list(*files):
+def filelist(*files):
     for f in files:
     	global fname
     	fname = os.path.basename(f)
@@ -11,6 +11,6 @@ def list(*files):
 
 writer = csv.writer(open('docs/merged.csv', 'wb'))
 writer.writerow(['email_hash', 'category', 'filename'])
-for row in csv.reader(list('docs/clothing.csv', 'docs/accessories.csv', 'docs/household_cleaners.csv')):
+for row in csv.reader(filelist('docs/clothing.csv', 'docs/accessories.csv', 'docs/household_cleaners.csv')):
 	row.append(fname)
 	writer.writerow(row)
