@@ -16,3 +16,4 @@ writer.writerow(['email_hash', 'category', 'filename'])
 for row in csv.reader(filelist('docs/clothing.csv', 'docs/accessories.csv', 'docs/household_cleaners.csv')):
 	row.append(fname) # Append the new filename column.
 	writer.writerow(row)
+	print(row)
