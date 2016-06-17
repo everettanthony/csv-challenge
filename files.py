@@ -13,7 +13,10 @@ def filelist(*files):
 # Write the data from the collected CSV files into a new CSV file.
 writer = csv.writer(open('docs/merged.csv', 'wb'))
 writer.writerow(['email_hash', 'category', 'filename'])
-for row in csv.reader(filelist('docs/clothing.csv', 'docs/accessories.csv', 'docs/household_cleaners.csv')):
-	row.append(fname) # Append the new filename column.
-	writer.writerow(row)
-	print(row)
+try:
+	for row in csv.reader(filelist('docs/clothing.csv', 'docs/accessories.csv', 'docs/household_cleaners.csv')):
+		row.append(fname) # Append the new filename column.
+		writer.writerow(row)
+		print row
+except csv.Error as e:
+	sys.exit('line %d: %s' % (reader.line_num, e))
